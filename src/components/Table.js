@@ -1,12 +1,17 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { deleteExpense } from '../redux/actions/expensesActions';
+import { deleteExpense, editExpense } from '../redux/actions/expensesActions';
 
 class Table extends Component {
   handleClick = (id) => {
     const { dispatch } = this.props;
     dispatch(deleteExpense(id));
+  };
+
+  handleEdit = (id) => {
+    const { dispatch } = this.props;
+    dispatch(editExpense(id));
   };
 
   render() {
@@ -52,6 +57,13 @@ class Table extends Component {
                   <td>{valueConverted.toFixed(2)}</td>
                   <td>Real</td>
                   <td>
+                    <button
+                      type="button"
+                      data-testid="edit-btn"
+                      onClick={ () => this.handleEdit(id) }
+                    >
+                      Editar
+                    </button>
                     <button
                       type="button"
                       data-testid="delete-btn"

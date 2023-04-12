@@ -1,5 +1,5 @@
 import {
-  ADD_EXPENSE, DELETE_EXPENSE,
+  ADD_EXPENSE, DELETE_EXPENSE, EDIT_EXPENSE, SAVE_EXPENSE,
 } from '../types/expensesTypes';
 
 import fetchWallet from '../../services/walletAPI';
@@ -19,6 +19,19 @@ const addExpense = (payload) => ({
 export const deleteExpense = (id) => ({
   type: DELETE_EXPENSE,
   payload: id,
+});
+
+export const editExpense = (id) => ({
+  type: EDIT_EXPENSE,
+  payload: id,
+});
+
+export const saveExpense = (payload, id) => ({
+  type: SAVE_EXPENSE,
+  payload: {
+    expense: payload,
+    id,
+  },
 });
 
 export const expenseThunk = (expense) => async (dispatch) => {
