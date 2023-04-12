@@ -27,9 +27,9 @@ const walletReducer = (state = INITIAL_STATE, action) => {
         id: state.expenses.length,
         value: payload.value,
         description: payload.description,
-        currencie: payload.currencie,
+        currency: payload.currency,
         method: payload.method,
-        category: payload.category,
+        tag: payload.tag,
         exchangeRates: payload.exchangeRates,
       }],
     };

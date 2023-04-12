@@ -9,9 +9,9 @@ const addExpense = (payload) => ({
   payload: {
     value: payload.value,
     description: payload.description,
-    currencie: payload.currencie,
+    currency: payload.currency,
     method: payload.method,
-    category: payload.category,
+    tag: payload.tag,
     exchangeRates: payload.exchangeRates,
   },
 });
@@ -20,13 +20,13 @@ export const expenseThunk = (expense) => async (dispatch) => {
   const currencies = await fetchWallet();
   const { value,
     description,
-    currencie,
+    currency,
     method,
-    category } = expense;
+    tag } = expense;
   dispatch(addExpense({ value,
     description,
-    currencie,
+    currency,
     method,
-    category,
+    tag,
     exchangeRates: currencies }));
 };

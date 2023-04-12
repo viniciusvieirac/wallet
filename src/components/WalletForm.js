@@ -8,9 +8,9 @@ class WalletForm extends Component {
   state = {
     inputValue: '',
     inputDescription: '',
-    inputCurrencie: 'USD',
+    inputCurrency: 'USD',
     inputMethod: 'Dinheiro',
-    inputCategory: 'Alimentação',
+    inputTag: 'Alimentação',
   };
 
   componentDidMount() {
@@ -31,15 +31,15 @@ class WalletForm extends Component {
     const {
       inputValue,
       inputDescription,
-      inputCurrencie,
+      inputCurrency,
       inputMethod,
-      inputCategory } = this.state;
+      inputTag } = this.state;
     const expenses = {
       value: inputValue,
       description: inputDescription,
-      currencie: inputCurrencie,
+      currency: inputCurrency,
       method: inputMethod,
-      category: inputCategory,
+      tag: inputTag,
     };
     dispatch(expenseThunk(expenses));
     this.setState({
@@ -49,15 +49,14 @@ class WalletForm extends Component {
   };
 
   render() {
-    const { currencies, loading } = this.props;
+    const { currencies } = this.props;
 
     const { inputValue,
       inputDescription,
-      inputCurrencie,
+      inputCurrency,
       inputMethod,
-      inputCategory } = this.state;
+      inputTag } = this.state;
 
-    if (loading) return '';
     return (
       <div>
         <form>
@@ -77,8 +76,8 @@ class WalletForm extends Component {
 
           />
           <select
-            name="inputCurrencie"
-            value={ inputCurrencie }
+            name="inputCurrency"
+            value={ inputCurrency }
             data-testid="currency-input"
             onChange={ this.handleChange }
 
@@ -105,8 +104,8 @@ class WalletForm extends Component {
             </option>
           </select>
           <select
-            name="inputCategory"
-            value={ inputCategory }
+            name="inputTag"
+            value={ inputTag }
             data-testid="tag-input"
             onChange={ this.handleChange }
 
@@ -137,7 +136,6 @@ class WalletForm extends Component {
 WalletForm.propTypes = {
   dispatch: PropTypes.func.isRequired,
   currencies: PropTypes.arrayOf(PropTypes.string).isRequired,
-  loading: PropTypes.bool.isRequired,
 };
 
 const mapStateToProps = (state) => ({
