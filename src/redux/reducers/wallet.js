@@ -1,9 +1,9 @@
-import { REQUEST_WALLET, FAILED_REQUEST, SUCESS_REQUEST } from '../types/walletTypes';
+import { REQUEST_WALLET, SUCESS_REQUEST } from '../types/walletTypes';
+import { ADD_EXPENSE } from '../types/expensesTypes';
 
 const INITIAL_STATE = {
   currencies: [],
-  loading: false,
-  errorMessage: null,
+  expenses: [],
 };
 
 const walletReducer = (state = INITIAL_STATE, action) => {
@@ -12,24 +12,27 @@ const walletReducer = (state = INITIAL_STATE, action) => {
   case (REQUEST_WALLET): {
     return {
       ...state,
-      loading: true,
     };
   }
   case (SUCESS_REQUEST): {
     return {
       ...state,
-      loading: false,
       currencies: payload,
     };
   }
-  case (FAILED_REQUEST): {
+  case ADD_EXPENSE:
     return {
       ...state,
-      loading: false,
-      errorMessage: payload.errorMessage,
-
+      expenses: [...state.expenses, {
+        id: state.expenses.length,
+        value: payload.value,
+        description: payload.description,
+        currencie: payload.currencie,
+        method: payload.method,
+        category: payload.category,
+        exchangeRates: payload.exchangeRates,
+      }],
     };
-  }
   default:
     return state;
   }
