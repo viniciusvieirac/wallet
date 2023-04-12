@@ -1,5 +1,5 @@
 import { REQUEST_WALLET, SUCESS_REQUEST } from '../types/walletTypes';
-import { ADD_EXPENSE } from '../types/expensesTypes';
+import { ADD_EXPENSE, DELETE_EXPENSE } from '../types/expensesTypes';
 
 const INITIAL_STATE = {
   currencies: [],
@@ -32,6 +32,11 @@ const walletReducer = (state = INITIAL_STATE, action) => {
         tag: payload.tag,
         exchangeRates: payload.exchangeRates,
       }],
+    };
+  case DELETE_EXPENSE:
+    return {
+      ...state,
+      expenses: state.expenses.filter((expense) => expense.id !== payload),
     };
   default:
     return state;

@@ -1,5 +1,5 @@
 import {
-  ADD_EXPENSE,
+  ADD_EXPENSE, DELETE_EXPENSE,
 } from '../types/expensesTypes';
 
 import fetchWallet from '../../services/walletAPI';
@@ -14,6 +14,11 @@ const addExpense = (payload) => ({
     tag: payload.tag,
     exchangeRates: payload.exchangeRates,
   },
+});
+
+export const deleteExpense = (id) => ({
+  type: DELETE_EXPENSE,
+  payload: id,
 });
 
 export const expenseThunk = (expense) => async (dispatch) => {
