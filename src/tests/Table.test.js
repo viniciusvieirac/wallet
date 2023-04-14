@@ -1,6 +1,5 @@
 import React from 'react';
 import { screen, waitFor } from '@testing-library/react';
-// import userEvent from '@testing-library/user-event';
 import userEvent from '@testing-library/user-event';
 import App from '../App';
 import { renderWithRouterAndRedux } from './helpers/renderWith';
@@ -41,5 +40,26 @@ describe('Testa o componente table', () => {
 
     expect(editButton).toBeInTheDocument();
     expect(deleteButton).toBeInTheDocument();
+  });
+
+  it('testa a funcionalidade dos botoes de editar/excluir despesa', async () => {
+    renderWithRouterAndRedux(<App />, { initialEntries: ['/carteira'] });
+
+    const adicionarDespesa = screen.getByRole('button', { name: /adicionar despesa/i });
+    userEvent.click(adicionarDespesa);
+
+    const editButton = await waitFor(() => screen.getByRole('button', { name: /editar/i }));
+    const deleteButton = await waitFor(() => screen.getByRole('button', { name: /excluir/i }));
+
+    expect(editButton).toBeInTheDocument();
+    expect(deleteButton).toBeInTheDocument();
+
+    userEvent.click(editButton);
+
+    const buttonEditAdd = await waitFor(() => screen.getByRole('button', { name: /editar despesa/i }));
+
+    expect(buttonEditAdd).toBeInTheDocument();
+    userEvent.click(deleteButton);
+    expect(deleteButton).not.toBeInTheDocument();
   });
 });
