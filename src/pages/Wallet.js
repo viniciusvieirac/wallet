@@ -1,5 +1,5 @@
 import React from 'react';
-import Header from '../components/Header';
+import Header from '../components/Header/Header';
 import WalletForm from '../components/WalletForm';
 import Table from '../components/Table';
 

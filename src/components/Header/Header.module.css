@@ -1,0 +1,8 @@
+.headerMain {
+  border: 1px solid red;
+}
+
+.headerMain span {
+  left: 0;
+  margin-left: 15px;
+}

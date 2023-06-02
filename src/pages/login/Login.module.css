@@ -1,0 +1,87 @@
+/* stylelint-disable length-zero-no-unit */
+* {
+  margin: 0;
+  padding: 0;
+}
+
+.mainLogin {
+  align-items: center;
+  background-color: #a69890;
+  display: flex;
+  height: 100vh;
+  justify-content: center;
+  width: 100vw;
+}
+
+.leftLogin {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  justify-content: center;
+  width: 50vw;
+}
+
+.rightLogin {
+  align-items: center;
+  display: flex;
+  height: 100vh;
+  justify-content: center;
+  width: 50vw;
+}
+
+.cardLogin {
+  align-items: center;
+  background: lightgray;
+  border-radius: 20px;
+  box-shadow: 0px 20px 40px silver;
+  display: flex;
+  flex-direction: column;
+  height: 250px;
+  justify-content: center;
+  padding: 30px 35px;
+  width: 100%;
+}
+
+.cardLogin h1 {
+  font-weight: 800;
+  margin-bottom: 10px;
+  text-align: center;
+}
+
+.textfield {
+  align-items: flex-start;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin-bottom: 10px;
+  width: 100%;
+}
+
+.textfield input {
+  border: none;
+  border-radius: 10px;
+  box-sizing: border-box;
+  font-size: 12pt;
+  outline: none;
+  padding: 15px;
+  width: 100%;
+}
+
+.textfield label {
+  margin-bottom: 10px;
+}
+
+.buttonLogin {
+  background-color: lightgreen;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  font-size: 12pt;
+  height: 50px;
+  width: 100%;
+}
+
+.leftImage {
+  width: 35vw;
+}
